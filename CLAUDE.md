@@ -15,11 +15,11 @@ No test framework is configured.
 
 Single-page React 19 expense tracker app built with Vite 6. Pure JavaScript (no TypeScript).
 
-**All application logic lives in `src/App.jsx`** — a single component managing state with `useState`. It handles:
-- Transaction list with income/expense tracking
-- Summary calculations (balance, income, expenses)
-- Add transaction form with validation
-- Filtering by type and category
+`src/App.jsx` is the root component that owns the `transactions` array state. UI is split into child components:
+
+- **`src/Summary.jsx`** — Displays income, expenses, and balance. Computes totals internally from `transactions` prop.
+- **`src/TransactionForm.jsx`** — Add transaction form with own form state. Calls `onAddTransaction` prop on submit.
+- **`src/TransactionList.jsx`** — Filtered transaction table with own filter state. Receives `transactions` prop.
 
 There is no routing, no state management library, no backend, and no data persistence.
 
