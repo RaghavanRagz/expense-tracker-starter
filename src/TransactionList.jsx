@@ -38,7 +38,7 @@ function TransactionList({ transactions, onDeleteTransaction }) {
             <th>Description</th>
             <th>Category</th>
             <th>Amount</th>
-            <th>Action</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -46,11 +46,15 @@ function TransactionList({ transactions, onDeleteTransaction }) {
             <tr key={t.id}>
               <td>{t.date}</td>
               <td>{t.description}</td>
-              <td>{t.category}</td>
+              <td><span className="category-tag">{t.category}</span></td>
               <td className={t.type === "income" ? "income-amount" : "expense-amount"}>
-                {t.type === "income" ? "+" : "-"}${t.amount}
+                {t.type === "income" ? "+" : "-"}${t.amount.toLocaleString()}
               </td>
-              <td><button onClick={() => onDeleteTransaction(t.id)}>Delete</button></td>
+              <td>
+                <button className="delete-btn" onClick={() => onDeleteTransaction(t.id)}>
+                  Remove
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

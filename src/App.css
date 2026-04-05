@@ -1,132 +1,282 @@
+/* ===================================
+   SWISS PRECISION — Finance Tracker
+   Every element earns its place.
+   =================================== */
+
+/* --- Layout --- */
+
 .app {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 60px 24px 80px;
+}
+
+/* --- Header --- */
+
+.app-header {
+  border-bottom: var(--rule-weight) solid var(--black);
+  padding-bottom: 16px;
+  margin-bottom: 48px;
 }
 
 h1 {
-  margin-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: 64px;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .subtitle {
-  margin-bottom: 20px;
-  color: #666;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 6px;
 }
 
+/* --- Summary Cards --- */
+
 .summary {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-bottom: 48px;
+  border-top: var(--rule-weight) solid var(--black);
+  border-bottom: var(--rule-weight) solid var(--black);
 }
 
 .summary-card {
-  flex: 1;
-  border: 1px solid #ddd;
-  padding: 14px;
-  background: #fff;
+  padding: 24px 0;
+  border-right: 1px solid var(--gray-200);
+}
+
+.summary-card:first-child {
+  padding-right: 24px;
+}
+
+.summary-card:nth-child(2) {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.summary-card:last-child {
+  padding-left: 24px;
+  border-right: none;
 }
 
 .summary-card h3 {
-  font-size: 13px;
-  color: #888;
-  margin-bottom: 4px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.summary-card .amount {
+  font-family: var(--font-display);
+  font-size: 36px;
+  letter-spacing: 1px;
+  line-height: 1;
+  font-weight: 400;
 }
 
 .income-amount {
-  color: green;
-  font-size: 20px;
-  font-weight: bold;
+  color: var(--black);
 }
 
 .expense-amount {
-  color: red;
-  font-size: 20px;
-  font-weight: bold;
+  color: var(--red);
 }
 
 .balance-amount {
-  font-size: 20px;
-  font-weight: bold;
+  color: var(--black);
 }
 
+.balance-negative {
+  color: var(--red);
+}
+
+/* --- Section Headers --- */
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-bottom: var(--rule-weight) solid var(--black);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+/* --- Add Transaction Form --- */
+
 .add-transaction {
-  border: 1px solid #ddd;
-  padding: 16px;
-  margin-bottom: 24px;
-  background: #fff;
+  margin-bottom: 48px;
 }
 
 .add-transaction h2 {
-  font-size: 16px;
-  margin-bottom: 12px;
+  composes: section-label;
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-bottom: var(--rule-weight) solid var(--black);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
 }
 
 form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.form-field {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray-400);
 }
 
 form input,
 form select {
-  padding: 8px;
-  border: 1px solid #ccc;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid var(--gray-200);
   font-size: 14px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--black);
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-form input[type="text"] {
-  flex: 2;
+form input:focus,
+form select:focus {
+  border-bottom-color: var(--black);
 }
 
-form input[type="number"] {
-  flex: 1;
+form input::placeholder {
+  color: var(--gray-400);
+  font-weight: 300;
 }
 
 form select {
-  flex: 1;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  padding-right: 20px;
 }
 
 form button {
-  padding: 8px 20px;
-  background: #333;
-  color: #fff;
+  padding: 10px 28px;
+  background: var(--black);
+  color: var(--white);
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.15s ease;
+  align-self: end;
 }
 
+form button:hover {
+  background: var(--red);
+}
+
+/* --- Spending Chart --- */
+
 .spending-chart {
-  border: 1px solid #ddd;
-  padding: 16px;
-  margin-bottom: 24px;
-  background: #fff;
+  margin-bottom: 48px;
+  border: none;
+  padding: 0;
+  background: transparent;
 }
 
 .spending-chart h2 {
-  font-size: 16px;
-  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-bottom: var(--rule-weight) solid var(--black);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
 }
 
+/* --- Transactions --- */
+
 .transactions {
-  margin-bottom: 24px;
+  margin-bottom: 48px;
 }
 
 .transactions h2 {
-  font-size: 16px;
-  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-bottom: var(--rule-weight) solid var(--black);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
 }
+
+/* --- Filters --- */
 
 .filters {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .filters select {
-  padding: 6px;
-  border: 1px solid #ccc;
+  padding: 8px 28px 8px 0;
+  border: none;
+  border-bottom: 1px solid var(--gray-200);
   font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--black);
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
 }
+
+.filters select:focus {
+  border-bottom-color: var(--black);
+}
+
+/* --- Table --- */
 
 table {
   width: 100%;
@@ -134,27 +284,157 @@ table {
 }
 
 thead {
-  background: #f5f5f5;
-}
-
-th, td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 14px;
+  background: transparent;
 }
 
 th {
-  font-size: 12px;
-  color: #888;
+  padding: 10px 12px 10px 0;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gray-400);
   text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: var(--rule-weight) solid var(--black);
 }
 
+td {
+  padding: 14px 12px 14px 0;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  border-bottom: 1px solid var(--gray-200);
+  vertical-align: middle;
+}
+
+th:last-child,
+td:last-child {
+  text-align: right;
+  padding-right: 0;
+}
+
+tr:hover td {
+  background: var(--gray-100);
+}
+
+/* Table amount styling */
+td.income-amount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--black);
+  font-size: 14px;
+}
+
+td.expense-amount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--red);
+  font-size: 14px;
+}
+
+/* --- Delete Button --- */
+
 .delete-btn {
-  padding: 4px 10px;
-  background: #eee;
-  border: 1px solid #ccc;
+  padding: 4px 12px;
+  background: transparent;
+  border: 1px solid var(--gray-200);
   cursor: pointer;
-  font-size: 12px;
-  color: #333;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray-400);
+  transition: all 0.15s ease;
+}
+
+.delete-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* --- Category Tags --- */
+
+.category-tag {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray-600);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 42px;
+  }
+
+  .summary {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .summary-card {
+    padding: 16px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .summary-card:first-child,
+  .summary-card:nth-child(2),
+  .summary-card:last-child {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .summary-card:last-child {
+    border-bottom: none;
+  }
+
+  form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  form button {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Animations --- */
+
+@keyframes ruleReveal {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.app-header {
+  animation: fadeUp 0.4s ease both;
+}
+
+.summary {
+  animation: fadeUp 0.4s ease 0.1s both;
+}
+
+.add-transaction {
+  animation: fadeUp 0.4s ease 0.2s both;
+}
+
+.spending-chart {
+  animation: fadeUp 0.4s ease 0.3s both;
+}
+
+.transactions {
+  animation: fadeUp 0.4s ease 0.4s both;
 }

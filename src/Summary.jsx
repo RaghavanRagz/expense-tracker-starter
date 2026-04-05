@@ -9,19 +9,24 @@ function Summary({ transactions }) {
 
   const balance = totalIncome - totalExpenses;
 
+  const formatAmount = (val) =>
+    val.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
   return (
     <div className="summary">
       <div className="summary-card">
         <h3>Income</h3>
-        <p className="income-amount">${totalIncome}</p>
+        <p className="amount income-amount">${formatAmount(totalIncome)}</p>
       </div>
       <div className="summary-card">
         <h3>Expenses</h3>
-        <p className="expense-amount">${totalExpenses}</p>
+        <p className="amount expense-amount">${formatAmount(totalExpenses)}</p>
       </div>
       <div className="summary-card">
         <h3>Balance</h3>
-        <p className="balance-amount">${balance}</p>
+        <p className={`amount ${balance < 0 ? 'balance-negative' : 'balance-amount'}`}>
+          ${formatAmount(balance)}
+        </p>
       </div>
     </div>
   );
